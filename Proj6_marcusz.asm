@@ -297,9 +297,6 @@ ReadVal PROC
 	PUSH	EBP
 	MOV     EBP,   ESP
 
-	; preserve registers
-	PUSHAD
-
 	; get user input
 	getInput:
 	MOV     EDX,   [EBP+28]                ; reset signCheck, since new loop. This is used to check if a sign has been encountered
@@ -417,9 +414,6 @@ ReadVal PROC
 	MOV   EDI,    [EBP+32]
 	MOV   [EDI],  EAX
 
-	; preserve registers
-	POPAD
-
 	veryEnd:
 	POP   EBP
 	RET   28
@@ -438,9 +432,6 @@ WriteVal PROC
 
 	PUSH   EBP
 	MOV    EBP,   ESP
-
-	; preserve registers
-	PUSHAD
 
 	; reset signCheck
 	MOV    EBX,   0
@@ -507,9 +498,6 @@ WriteVal PROC
 		
 	; use macro to display string
 	mDisplayString [EBP+16]
-
-	; preserve registers
-	POPAD
 
 	POP     EBP
 	RET     16
